@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tak Kalkulator</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tak Kalkulator</h1>
+        <div class="search-container">
+            <input type="text" id="address-input" placeholder="Skriv inn adresse...">
+            <button id="search-button">Søk</button>
+        </div>
+        <div id="map"></div>
+        <div id="area-info" class="area-info">
+            <p>Tegn området for å måle areal</p>
+            <div id="area-value"></div>
+            <div id="building-details" class="building-details" style="display: none;">
+                <h3>Bygningsdetaljer</h3>
+                <div class="form-group">
+                    <label>Velg antall etasjer (inkl. loft):</label>
+                    <div class="floor-buttons">
+                        <button class="floor-btn" data-floors="1">1</button>
+                        <button class="floor-btn" data-floors="2">2</button>
+                        <button class="floor-btn" data-floors="3">3</button>
+                        <button class="floor-btn" data-floors="4">4</button>
+                        <button class="floor-btn" data-floors="5">5+</button>
+                    </div>
+                    <div id="custom-floors" style="display: none;">
+                        <input type="number" id="floor-count" min="5" max="100" value="5">
+                        <button class="floor-btn" id="apply-floors">OK</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Velg taktype:</label>
+                    <div class="roof-buttons">
+                        <button class="roof-btn" data-roof="flat">
+                            <span class="roof-icon">▭</span>
+                            Flatt tak
+                        </button>
+                        <button class="roof-btn" data-roof="sloped">
+                            <span class="roof-icon">△</span>
+                            Skråtak
+                        </button>
+                    </div>
+                </div>
+                <div id="height-result"></div>
+                <button id="calculate-price" class="calculate-price-btn" style="display: none;">
+                    Beregn pris for takvask
+                </button>
+                <div id="price-result"></div>
+            </div>
+        </div>
+        <div id="search-results"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-draw@1.0.4/dist/leaflet.draw.js"></script>
+    <script src="https://unpkg.com/@turf/turf@6/turf.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
